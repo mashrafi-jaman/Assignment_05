@@ -226,7 +226,39 @@
         </div>
 
     </section>
-    
+
+     <!-- Script Section -->
+       <script>
+        let coinCount = 100;
+        let heartCount = 0;
+        let copyCount = 0;
+
+        const coinEl = document.querySelector("#show-option div:nth-child(2) p");
+        const heartEl = document.querySelector("#show-option div:nth-child(1) p");
+        const copyEl = document.querySelector("#show-option div:nth-child(3) p:first-child");
+        const historyContainer = document.querySelector(".row-span-3");
+        const clearBtn = historyContainer.querySelector("button");
+
+        function updateUI() {
+            coinEl.innerText = coinCount;
+            heartEl.innerText = heartCount;
+            copyEl.innerText = copyCount;
+        }
+        updateUI();
+
+        // --- Heart button event ---
+        const icons = document.querySelectorAll(".fa-heart");
+        for (const icon of icons) {
+            icon.addEventListener("click", function () {
+                heartCount++;
+                updateUI();
+            });
+        }
+
+
+
+    </script>
+
 </body>
 
 </html>
