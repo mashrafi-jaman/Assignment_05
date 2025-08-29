@@ -315,6 +315,16 @@ for (const btn of phoneBtns) {
         }
     });
 }
+
+    // --- Clear history event ---
+        clearBtn.addEventListener("click", function () {
+            const items = historyContainer.querySelectorAll(".mt-2");
+            for (const item of items) {
+                item.remove();
+            }
+        });
+
+        
     </script>
 
 </body>
