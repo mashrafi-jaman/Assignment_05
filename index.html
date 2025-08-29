@@ -255,7 +255,21 @@
             });
         }
 
+        // --- Copy button event ---
+        const copyButtons = document.querySelectorAll(".fa-copy");
 
+        for (const btn of copyButtons) {
+            btn.parentElement.addEventListener("click", function () {
+                const card = this.closest("div.h-auto");
+                const num = card.querySelector("h1.text-2xl").innerText;
+                navigator.clipboard.writeText(num);
+                copyCount++;
+                updateUI();
+                const number = card.querySelector("h1.text-2xl").innerText;
+                alert("Copied number: " + number);
+
+            });
+        }
 
     </script>
 
