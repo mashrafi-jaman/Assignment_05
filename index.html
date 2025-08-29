@@ -271,6 +271,50 @@
             });
         }
 
+        
+        // --- Call button event ---
+const phoneBtns = document.querySelectorAll(".fa-phone");
+
+for (const btn of phoneBtns) {
+    btn.parentElement.addEventListener("click", function () {
+        const card = this.closest("div.h-auto");
+        const serviceName = card.querySelector("h1.font-bold").innerText;
+        const serviceNumber = card.querySelector("h1.text-2xl").innerText;
+
+        const confirmCall = confirm("Do you want to call " + serviceName + "? (Number: " + serviceNumber + ")");
+        if (confirmCall) {
+            if (coinCount >= 20) {
+                coinCount -= 20;
+
+                const time = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+                const historyBox = document.createElement("div");
+                historyBox.className = "mt-2 bg-gray-300 p-5 rounded-2xl flex justify-between items-center";
+
+                const leftDiv = document.createElement("div");
+                const h1 = document.createElement("h1");
+                h1.className = "font-bold";
+                h1.innerText = serviceName;
+                const p1 = document.createElement("p");
+                p1.innerText = serviceNumber;
+                leftDiv.appendChild(h1);
+                leftDiv.appendChild(p1);
+
+                const rightDiv = document.createElement("div");
+                const p2 = document.createElement("p");
+                p2.innerText = time;
+                rightDiv.appendChild(p2);
+
+                historyBox.appendChild(leftDiv);
+                historyBox.appendChild(rightDiv);
+                historyContainer.appendChild(historyBox);
+
+                updateUI();
+            } else {
+                alert("Not enough coins! You need at least 20 coins to call.");
+            }
+        }
+    });
+}
     </script>
 
 </body>
